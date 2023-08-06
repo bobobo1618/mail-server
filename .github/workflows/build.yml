@@ -21,10 +21,10 @@ jobs:
         include:
           - target: x86_64-unknown-linux-gnu
             host_os: ubuntu-20.04
-          - target: x86_64-apple-darwin
-            host_os: macos-latest
-          - target: x86_64-pc-windows-msvc
-            host_os: windows-2022
+          #- target: x86_64-apple-darwin
+          #  host_os: macos-latest
+          #- target: x86_64-pc-windows-msvc
+          #  host_os: windows-2022
           #- target: aarch64-unknown-linux-gnu
           #  host_os: ubuntu-20.04
           #- target: x86_64-unknown-linux-musl
@@ -125,10 +125,10 @@ jobs:
 
     strategy:
       matrix:
-        include:
-          - arch: aarch64
-            distro: ubuntu20.04
-            target: aarch64-unknown-linux-gnu
+        include: []
+          #- arch: aarch64
+          #  distro: ubuntu20.04
+          #  target: aarch64-unknown-linux-gnu
     steps:
       - uses: actions/checkout@v3
       - uses: uraimo/run-on-arch-action@v2
@@ -189,10 +189,10 @@ jobs:
 
     strategy:
       matrix:
-        include:
-          - arch: aarch64
-            distro: ubuntu20.04
-            target: aarch64-unknown-linux-gnu
+        include: []
+          #- arch: aarch64
+          #  distro: ubuntu20.04
+          #  target: aarch64-unknown-linux-gnu
     steps:
       - uses: actions/checkout@v3
       - uses: uraimo/run-on-arch-action@v2
@@ -247,8 +247,8 @@ jobs:
   build_docker:
     needs:
       - build
-      - cross_build
-      - cross_build_tools    
+      #- cross_build
+      #- cross_build_tools    
     name: Build Docker image for ${{ matrix.platform }}
     runs-on: ubuntu-latest
     if: '!cancelled()'
@@ -257,7 +257,7 @@ jobs:
       matrix:
         platform:
           - linux/amd64
-          - linux/arm64
+          #- linux/arm64
     steps:
       -
         name: Prepare
